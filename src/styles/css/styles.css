@@ -1,0 +1,9 @@
+body {
+  background-color: black;
+  color: green;
+  font-family: monospace;
+}
+
+header {
+  text-transform: uppercase;
+}
