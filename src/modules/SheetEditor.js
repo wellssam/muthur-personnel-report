@@ -1,9 +1,33 @@
+import {useState} from "react"
+
+
 const SheetEditor = ({editSubmit}) => {
+    
+    
+
+    const handleEditSubmit = (event) => {
+
+        event.preventDefault()
+        const userInputs = event.target
+        console.log(userInputs)
+
+        const newCharacterObject = {};
+
+        for (let i = 0; i < 42 ; i++  ){
+            console.log(userInputs[i].value)
+            newCharacterObject[userInputs[i].id] = userInputs[i].value 
+            
+
+        }
+        console.log(newCharacterObject)
+        editSubmit(newCharacterObject)
+
+    
+    }
+
     return (
-        <li className="fullSheet">
-            <form action="submit" onSubmit={(event)=>{
-                editSubmit(event)
-            }}>
+        <li className="editSheet">
+            <form action="submit" onSubmit={handleEditSubmit}>
                 <label htmlFor="name">Name:</label>
                 <input type="text" id="name" placeholder="[name]" />
                 <label htmlFor="playerName">Player Name: </label>
@@ -44,18 +68,8 @@ const SheetEditor = ({editSubmit}) => {
                     <li><label htmlFor="critInj">Critical Injuries: </label>
                         <textarea id="critInj" placeholder="[critical injuries]" /></li>
                     <li>
-                        <p>Conditions:</p>
-                        <fieldset>
-                            <label htmlFor="starving">Starving</label>
-                            <input type="checkbox" id="starving" />
-                            <label htmlFor="dehydrated">Dehydrated</label>
-                            <input type="checkbox" id="dehydrated" />
-                            <label htmlFor="exhausted">Exhausted</label>
-                            <input type="checkbox" id="exhausted" />
-                            <label htmlFor="freezing">Freezing</label>
-                            <input type="checkbox" id="freezing" />
-                        </fieldset>
-
+                        <label htmlFor="conditions">Conditions: </label>
+                        <textarea id="conditions" placeholder="[conditions]" />
                     </li>
                 </ul>
 
@@ -156,7 +170,7 @@ const SheetEditor = ({editSubmit}) => {
                     <li><label htmlFor="encumbrance">Encumbrance: </label>
                         <input type="number" id="encumbrance" placeholder="0" /></li>
                 </ul>
-                <button type="submit">Edit</button>
+                <button type="submit">Submit</button>
             </form>
         </li>
     )

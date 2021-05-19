@@ -7,7 +7,6 @@ const CharacterList = ({ characterData, expandClick, focusSheet, miniClick, edit
 
     return (
         <section>
-            <h2>Personnel:</h2>
             {/* minimized character sheet */}
             <ul className="sheetList">
 

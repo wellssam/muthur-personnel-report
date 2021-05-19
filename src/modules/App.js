@@ -15,43 +15,49 @@ function App() {
   const [characters, setCharacters] = useState([]);
   const [focusSheet, setFocusSheet] = useState("");
   const [editSheet, setEditSheet] = useState("");
-  const [userInput,setUserInput] = useState("");
+  const [newSheetInfo, setNewSheetInfo] = useState("");
 
   useEffect(() => {
     const newDataArray = [];
-    dbRef.on("value", (response)=>{
+    dbRef.on("value", (response) => {
       const data = response.val();
       for (let key in data) {
-        let characterObj = {key:key, data: data[key]};
+        let characterObj = { key: key, data: data[key] };
         newDataArray.push(characterObj);
       }
       setCharacters(newDataArray)
     });
-  }, []);
+  }, [""]);
 
   const handleExpandClick = (characterIndex) => {
     setFocusSheet(characterIndex)
   }
 
-  const handleMiniClick = () =>{
+  const handleMiniClick = () => {
     setFocusSheet("")
   }
 
   const handleEditClick = (characterIndex) => {
     setEditSheet(characterIndex)
-  } 
-  
-  const handleEditSubmit = (event) =>{
-    event.preventDefault()
+  }
+
+  const updateSheet = (editedSheet) => {
+    setNewSheetInfo(editedSheet)
     setEditSheet("")
+    console.log(newSheetInfo)
+    dbRef.push(newSheetInfo)
 
   }
 
+
   return (
     <>
-      {/* header module */}
-      <Header />
-      <CharacterList characterData={characters} expandClick={handleExpandClick} miniClick={handleMiniClick} focusSheet={focusSheet} editClick={handleEditClick} editSheet={editSheet} editSubmit={handleEditSubmit}/>
+      <div className="wrapper">
+
+        {/* header module */}
+        <Header />
+        <CharacterList characterData={characters} expandClick={handleExpandClick} miniClick={handleMiniClick} focusSheet={focusSheet} editClick={handleEditClick} editSheet={editSheet} editSubmit={updateSheet} />
+      </div>
     </>
   );
 }
