@@ -1,0 +1,29 @@
+header{
+    text-transform: uppercase;
+    margin: 30px 0;
+}
+
+.headerWrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+h1{
+    font-size: 6rem;
+    font-weight: 700;
+}
+
+h2{
+    margin-bottom: 10px;
+}
+
+.newCharacterButton{
+    width: 12rem;
+    height: 10rem;
+}
+
+header p{
+    text-transform: none;
+    font-size: 1.6rem;
+}

@@ -2,7 +2,7 @@ import MiniSheet from "./MiniSheet.js"
 import FullSheet from "./FullSheet.js";
 import SheetEditor from "./SheetEditor.js"
 
-const CharacterList = ({ characterData, expandClick, focusSheet, miniClick, editClick, editSheet, editSubmit }) => {
+const CharacterList = ({ characterData, expandClick, focusSheet, miniClick, editClick, editSheet, editSubmit, removeSheet }) => {
 
 
     return (
@@ -11,7 +11,7 @@ const CharacterList = ({ characterData, expandClick, focusSheet, miniClick, edit
             <ul className="sheetList">
 
                 {characterData.map((character) => {
-                    if (character.key === editSheet) {
+                     if (character.key === editSheet) {
                         return (
                             <SheetEditor key={character.key} editSubmit={editSubmit} characterIndex={character.key} characterDetails={character.data}/>
                             
@@ -23,8 +23,9 @@ const CharacterList = ({ characterData, expandClick, focusSheet, miniClick, edit
                     } else {
                         return (
                             <MiniSheet key={character.key} characterIndex={character.key} characterDetails={character.data}
-                                expandClick={expandClick} />
+                                expandClick={expandClick} removeSheet={removeSheet}/>
                         )
+                    
                     }
                 })}
 

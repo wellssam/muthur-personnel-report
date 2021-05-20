@@ -1,0 +1,48 @@
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+form li{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+input,textarea{
+    background-color: #021105;
+    border: none;
+    color: #81d26f;
+    text-shadow: 2px 2px 3px #0c6620,
+     -2px 2px 2px #0c6620;
+    resize: none;
+    &::placeholder{
+        color: #81d26f;
+        opacity: 1;
+    }
+}
+
+// removing buttons on number inputs
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
+
+button{
+    background-color: black;
+    border: solid #0c6620 2px;
+    box-shadow: #81d26f 1px 1px 3px,
+    #81d26f -1px -1px 3px;
+    color: #81d26f;
+    text-shadow: 2px 2px 3px #0c6620,
+     -2px 2px 2px #0c6620;
+}

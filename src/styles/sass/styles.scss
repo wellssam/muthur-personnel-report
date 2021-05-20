@@ -1,57 +1,9 @@
 @import "setup.scss";
+@import "body.scss";
+@import "header.scss";
+@import "form.scss";
+@import "characterSheet.scss"
 
-html{
-    font-size: 62.5%;
-}
 
-body{
-    background-color: black;
-    color: #81d26f;
-    text-shadow: 2px 2px 3px #0c6620,
-     -2px 2px 2px #0c6620;
-    font-family: 'Space Mono',monospace;
-    font-size: 2rem;
-}
 
-.wrapper{
-    max-width: 1200px;
-    margin: 0 auto;
-}
 
-header{
-    text-transform: uppercase;
-}
-
-h1{
-    font-size: 6rem;
-    font-weight: 700;
-}
-
-button{
-    background-color: black;
-    border: solid #0c6620 2px;
-    box-shadow: #81d26f 1px 1px 3px,
-    #81d26f -1px -1px 3px;
-    color: #81d26f;
-    text-shadow: 2px 2px 3px #0c6620,
-     -2px 2px 2px #0c6620;
-}
-
-.sheetList{
-    display: grid;
-    grid-template-columns: 0.5fr 0.5fr;
-    gap: 40px;
-
-}
-
-.fullSheet,.miniSheet,.editSheet{
-    border: solid #0c6620 2px;
-    box-shadow: #81d26f 1px 1px 3px,
-    #81d26f -1px -1px 3px;
-    padding: 10px;
-    line-height: 3rem
-}
-
-.fullSheet,.editSheet{
-    grid-column-start: span 2;
-}

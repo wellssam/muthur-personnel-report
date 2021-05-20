@@ -1,0 +1,28 @@
+html{
+    font-size: 62.5%;
+}
+
+body{
+    background-color: black;
+    color: #81d26f;
+    text-shadow: 2px 2px 3px #0c6620,
+     -2px 2px 2px #0c6620;
+    font-family: 'Space Mono',monospace;
+    font-size: 2rem;
+}
+
+.wrapper{
+    max-width: 1200px;
+    margin: 0 auto;
+    @media(max-width: 1200px){
+            margin:0 30px;
+        }
+}
+
+a{
+    color:#81d26f;
+}
+
+footer{
+  margin-top: 40px;
+}

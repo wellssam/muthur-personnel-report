@@ -1,3 +1,6 @@
+// full-form sheet. populates with data from the characters array. calls the miniClick and editClick handlers when the respective buttons are clicked. 
+
+
 const FullSheet = ({ characterIndex, miniClick, editClick, characterDetails }) => {
     return (
         <li className="fullSheet">
@@ -9,13 +12,15 @@ const FullSheet = ({ characterIndex, miniClick, editClick, characterDetails }) =
                 <li>Appearance: {characterDetails.appearance}</li>
                 <li>Agenda: {characterDetails.agenda}</li>
                 <li>Talents: {characterDetails.talents}</li>
-                <li>Relationships
+                <li>
+                    <h3>Relationships</h3>
                 <ul>
                         <li>Buddy: {characterDetails.buddy}</li>
                         <li>Rival: {characterDetails.rival}</li>
                     </ul>
                 </li>
-                <li>Status Scores
+                <li>
+                    <h3>Status Scores</h3>
                 <ul>
                         <li>Stress: {characterDetails.stress}</li>
                         <li>Health: {characterDetails.health}</li>
@@ -25,16 +30,10 @@ const FullSheet = ({ characterIndex, miniClick, editClick, characterDetails }) =
                         <li>Critical Injuries: {characterDetails.critInj}</li>
                     </ul>
                 </li>
-                <li><p>Conditions:</p>
-                    <ul>
-                        <li>Starving: {characterDetails.starving ? `yes` : `no`}</li>
-                        <li>Starving: {characterDetails.dehydrated ? `yes` : `no`}</li>
-                        <li>Starving: {characterDetails.exhausted ? `yes` : `no`}</li>
-                        <li>Starving: {characterDetails.freezing ? `yes` : `no`}</li>
-                    </ul>
+                <li> Conditions: {characterDetails.conditions}
                 </li>
                 <li>
-                    <p>Attributes:</p>
+                    <h3>Attributes</h3>
                     <ul>
                         <li>Strength: {characterDetails.strength}</li>
                         <li>Wits: {characterDetails.wits}</li>
@@ -43,11 +42,11 @@ const FullSheet = ({ characterIndex, miniClick, editClick, characterDetails }) =
                     </ul>
                 </li>
                 <li>
-                    <p>Skills:</p>
+                    <h3>Skills</h3>
                     <ul>
                         <li>
                             <ul>
-                                <li>Strength Skills</li>
+                                <li><h3>Strength Skills</h3></li>
                                 <li>Heavy Machinery: {characterDetails.heavyMachinery}</li>
                                 <li>Close Combat: {characterDetails.closeCombat}</li>
                                 <li>Stamina: {characterDetails.stamina}</li>
@@ -55,7 +54,7 @@ const FullSheet = ({ characterIndex, miniClick, editClick, characterDetails }) =
                         </li>
                         <li>
                             <ul>
-                                <li>Wits Skills</li>
+                                <li><h3>Wits Skills</h3></li>
                                 <li>Observation: {characterDetails.observation}</li>
                                 <li>Survival: {characterDetails.survival}</li>
                                 <li>ComTech: {characterDetails.comtech}</li>
@@ -63,7 +62,7 @@ const FullSheet = ({ characterIndex, miniClick, editClick, characterDetails }) =
                         </li>
                         <li>
                             <ul>
-                                <li>Empathy Skills</li>
+                                <li><h3>Empathy Skills</h3></li>
                                 <li>Medical Aid: {characterDetails.medicalAid}</li>
                                 <li>Manipulation: {characterDetails.manipulation}</li>
                                 <li>Command: {characterDetails.command}</li>
@@ -71,7 +70,7 @@ const FullSheet = ({ characterIndex, miniClick, editClick, characterDetails }) =
                         </li>
                         <li>
                             <ul>
-                                <li>Agility Skills</li>
+                                <li><h3>Agility Skills</h3></li>
                                 <li>Ranged Combat: {characterDetails.rangedCombat}</li>
                                 <li>Mobility: {characterDetails.mobility}</li>
                                 <li>Piloting: {characterDetails.piloting}</li>
@@ -82,7 +81,7 @@ const FullSheet = ({ characterIndex, miniClick, editClick, characterDetails }) =
                 <li>
                     <ul>
                         <li>
-                            Inventory:
+                            <h3>Agility Skills</h3>
                     </li>
                         <li>Armor: {characterDetails.armor}</li>
                         <li>Weapons: {characterDetails.weapons}</li>
@@ -91,7 +90,7 @@ const FullSheet = ({ characterIndex, miniClick, editClick, characterDetails }) =
                         <li>Signature Item: {characterDetails.signatureItem}</li>
                         <li>
                             <ul>
-                                <li>Consummables:</li>
+                                <li><h3>Consummables:</h3></li>
                                 <li>Air: {characterDetails.air}</li>
                                 <li>Food: {characterDetails.food}</li>
                                 <li>Power: {characterDetails.power}</li>
@@ -102,7 +101,7 @@ const FullSheet = ({ characterIndex, miniClick, editClick, characterDetails }) =
                     </ul>
                 </li>
 
-                <li>
+                <li className="buttonContainer">
                     <button onClick={miniClick}>Minimize</button>
                     <button onClick={() => {
                         editClick(characterIndex)
