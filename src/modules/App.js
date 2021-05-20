@@ -12,14 +12,11 @@ import { useEffect, useState } from "react"
 function App() {
   // initialize dbRef
   const dbRef = firebase.database().ref();
-  console.log(firebase.database())
-  console.log(dbRef, "dbRef")
   // initialize state for the total list of characters, which sheet is focused on, and which sheet is in edit mode 
   const [characters, setCharacters] = useState([]);
   const [focusSheet, setFocusSheet] = useState("");
   const [editSheet, setEditSheet] = useState("");
   // initialize a state to hold submitted info from the form
-  const [newSheetInfo, setNewSheetInfo] = useState({});
   const [changeIterator, setChangeIterator] = useState(0)
 
   useEffect(() => {
@@ -32,20 +29,10 @@ function App() {
         // loop through the newDataArray and make sure there are no duplicate keys or names
         if(newDataArray){
           let keyDuplicate = false;
-          let nameDuplicate = false;
-          let nameThatIsDuplicated = "";
           for (const dataPoint of newDataArray) {
             if (characterObj.key === dataPoint.key) {
               keyDuplicate = true;
             } 
-
-            // if (characterObj.data.name === dataPoint.data.name) {
-            //   nameDuplicate = true;
-            //   nameThatIsDuplicated = characterObj.data.name;
-            //   if(nameDuplicate){
-            //     removeFromDb(nameThatIsDuplicated)
-            //   }
-            // }
           }
           
           if (!keyDuplicate) {
@@ -61,7 +48,6 @@ function App() {
       
       setCharacters(newDataArray)
       
-      console.log(characters)
       // checkNew(characters)
     });
   }, [changeIterator, dbRef.toJSON()]);
@@ -80,13 +66,10 @@ function App() {
   }
   // handler for when the edit form is submitted (this does not work)
   const updateSheet = (editedSheet) => {
-    setNewSheetInfo(editedSheet)
     setEditSheet("")
     for (const character of characters){
       if(character.data.name === editedSheet.name){
-        console.log(character.data.name, editedSheet.name)
         const characterRef = firebase.database().ref("/"+character.key);
-        console.log(characterRef.toJSON())
         characterRef.set(editedSheet)
         setChangeIterator(changeIterator + 1)
       } 
@@ -95,7 +78,6 @@ function App() {
   }
 
   const handleNewHireClick = () => {
-    console.log ('new hire clicked!')
     const newName = prompt("Character Name:")
     const newCharacter = {name: newName};
     dbRef.push(newCharacter);
@@ -106,7 +88,6 @@ function App() {
 
   const removeFromDb = (name)=>{
     for (const character of characters) {
-      console.log('removeFromDb', character)
       if(character.data.name === name){
         const characterRef =firebase.database().ref(character.key);
         characterRef.remove();
