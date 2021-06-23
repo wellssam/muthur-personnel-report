@@ -4,11 +4,6 @@ import Header from './Header.js'
 import CharacterList from './CharacterList';
 import { useEffect, useState } from "react"
 
-// import MiniSheet from './MiniSheet.js'
-// import FullSheet from './FullSheet.js'
-
-// how do i cycle through a firebase database and check if there is already an existing version of that object
-
 function App() {
   // initialize dbRef
   const dbRef = firebase.database().ref();
@@ -43,14 +38,11 @@ function App() {
         }
         
       }
-      
-
-      
       setCharacters(newDataArray)
       
       // checkNew(characters)
     });
-  }, [changeIterator, dbRef.toJSON()]);
+  }, [dbRef]);
   
   // handler for the when the expand button is clicked
   const handleExpandClick = (characterIndex) => {
@@ -81,7 +73,7 @@ function App() {
     const newName = prompt("Character Name:")
     const newCharacter = {name: newName};
     dbRef.push(newCharacter);
-    // the changeIterator solution is to get the page re-rendering properly, because sometimes it just won't and i don't knwo why. I know there must be a better way. And yet here we are.
+    // the changeIterator solution is to get the page re-rendering properly, because sometimes it just won't and i don't know why. I know there must be a better way. And yet here we are.
     setChangeIterator(changeIterator + 1)
   }
 
