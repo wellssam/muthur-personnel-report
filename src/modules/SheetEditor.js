@@ -3,29 +3,23 @@ const SheetEditor = ({editSubmit, characterDetails}) => {
     
 
     const handleEditSubmit = (event) => {
-
         // prevent refresh
         event.preventDefault()
         // create a variable based on the form's user input
         const userInputs = event.target
-
         // create an empty new character object
         const newCharacterObject = {};
         // loop through the viable parameters of the user's input and save them to the userInputs object
-        for (let i = 0; i < 42 ; i++  ){
+        for (let i = 0; i < 42 ; i++){
             // this if statement is error handling ( i kept getting an empty key param and didn't know why)
             if (userInputs[i].id){
                 userInputs[i].value 
                     ? (newCharacterObject[userInputs[i].id] = userInputs[i].value) 
                     : (newCharacterObject[userInputs[i].id] = userInputs[i].placeholder) 
             }
-            
-
         }
         // call the handleEditSubmit function with the object created from the user input
         editSubmit(newCharacterObject)
-
-    
     }
 
     return (
@@ -69,13 +63,13 @@ const SheetEditor = ({editSubmit, characterDetails}) => {
                     <li><label htmlFor="radiation">Radiation: </label>
                         <input type="number" id="radiation" placeholder={characterDetails.radiation}  /></li>
                     <li><label htmlFor="critInj">Critical Injuries: </label>
-                        <textarea id="critInj" placeholder={characterDetails.critInj}  /></li>
+                        <textarea id="cr=" strength">Strength: </label>
+                        <input type="nritInj" placeholder={characterDetails.critInj}  /></li>
                     <li>
                         <label htmlFor="conditions">Conditions: </label>
                         <textarea id="conditions" placeholder={characterDetails.conditions}  />
                     </li>
                 </ul>
-
                 <ul>
                     <li>Attributes</li>
                     <li>

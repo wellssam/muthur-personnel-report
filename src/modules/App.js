@@ -12,14 +12,13 @@ function App() {
   const [focusSheet, setFocusSheet] = useState("");
   const [editSheet, setEditSheet] = useState("");
   // initialize a state to hold submitted info from the form
-  const [changeIterator, setChangeIterator] = useState(0)
 
   useEffect(() => {
     // initialize an array for the new data
     const newDataArray = [];
     dbRef.on("value", (response) => {
       const data = response.val();
-      for (let key in data) {
+      for (let key in data) { // the changeIterator solution is to get the page re-rendering properly, because sometimes it just won't and i don't know why. I know there must be a better way. And yet here we are.
         const characterObj = { key: key, data: data[key] };
         // loop through the newDataArray and make sure there are no duplicate keys or names
         if(newDataArray){
@@ -29,18 +28,14 @@ function App() {
               keyDuplicate = true;
             } 
           }
-          
           if (!keyDuplicate) {
             newDataArray.push(characterObj);
           }
         } else{
           newDataArray.push(characterObj);
         }
-        
       }
       setCharacters(newDataArray)
-      
-      // checkNew(characters)
     });
   }, [dbRef]);
   
@@ -62,21 +57,16 @@ function App() {
     for (const character of characters){
       if(character.data.name === editedSheet.name){
         const characterRef = firebase.database().ref("/"+character.key);
-        characterRef.set(editedSheet)
-        setChangeIterator(changeIterator + 1)
+        characterRef.set(editedSheet);
       } 
     }
-
   }
 
   const handleNewHireClick = () => {
     const newName = prompt("Character Name:")
     const newCharacter = {name: newName};
     dbRef.push(newCharacter);
-    // the changeIterator solution is to get the page re-rendering properly, because sometimes it just won't and i don't know why. I know there must be a better way. And yet here we are.
-    setChangeIterator(changeIterator + 1)
   }
-
 
   const removeFromDb = (name)=>{
     for (const character of characters) {
@@ -91,15 +81,12 @@ function App() {
   return (
     <>
       <div className="wrapper">
-
         {/* header module */}
         <Header newHire={handleNewHireClick}/>
         <CharacterList characterData={characters} expandClick={handleExpandClick} miniClick={handleMiniClick} focusSheet={focusSheet} editClick={handleEditClick} editSheet={editSheet} editSubmit={updateSheet} removeSheet={removeFromDb}/>
         <footer>
-       
       </footer>
       </div>
-
     </>
   );
 }

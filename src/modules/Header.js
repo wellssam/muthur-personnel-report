@@ -5,7 +5,6 @@ const Header = ({ newHire }) => {
             <header>
                 <div className="headerWrapper">
                     <div className="titleWrapper">
-
                         <h1>MU//TH//UR Personnel Report</h1>
                         <h2>A Character Tracker for ALIEN: The Roleplaying Game</h2>
                     </div>
