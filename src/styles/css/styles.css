@@ -404,3 +404,30 @@ h3 {
   -ms-grid-column: span 2;
       grid-column-start: span 2;
 }
+
+div.loginModal {
+  width: 50%;
+  min-width: 500px;
+  border: solid #0c6620 2px;
+  -webkit-box-shadow: #81d26f 1px 1px 3px, #81d26f -1px -1px 3px;
+          box-shadow: #81d26f 1px 1px 3px, #81d26f -1px -1px 3px;
+  padding: 10px;
+  line-height: 3rem;
+  margin: 0 auto;
+}
+
+div.loginModal .buttonWrapper {
+  margin: 0 auto;
+  padding-top: 10px;
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+div.loginModal .buttonWrapper button {
+  width: 200px;
+}

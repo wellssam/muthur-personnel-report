@@ -3,6 +3,7 @@ import firebase from '../config/firebase.js'
 import Header from './Header.js'
 import CharacterList from './CharacterList';
 import { useEffect, useState } from "react"
+import LoginModule from './LoginModule.js'
 
 function App() {
   // initialize dbRef
@@ -18,7 +19,7 @@ function App() {
     const newDataArray = [];
     dbRef.on("value", (response) => {
       const data = response.val();
-      for (let key in data) { // the changeIterator solution is to get the page re-rendering properly, because sometimes it just won't and i don't know why. I know there must be a better way. And yet here we are.
+      for (let key in data) { 
         const characterObj = { key: key, data: data[key] };
         // loop through the newDataArray and make sure there are no duplicate keys or names
         if(newDataArray){
@@ -73,7 +74,6 @@ function App() {
       if(character.data.name === name){
         const characterRef =firebase.database().ref(character.key);
         characterRef.remove();
-        setChangeIterator(changeIterator+1)
       }
     }
   }
@@ -84,9 +84,8 @@ function App() {
         {/* header module */}
         <Header newHire={handleNewHireClick}/>
         <CharacterList characterData={characters} expandClick={handleExpandClick} miniClick={handleMiniClick} focusSheet={focusSheet} editClick={handleEditClick} editSheet={editSheet} editSubmit={updateSheet} removeSheet={removeFromDb}/>
-        <footer>
-      </footer>
       </div>
+      <LoginModule/>
     </>
   );
 }

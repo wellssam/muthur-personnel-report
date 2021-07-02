@@ -1,7 +1,4 @@
 const SheetEditor = ({editSubmit, characterDetails}) => {
-    
-    
-
     const handleEditSubmit = (event) => {
         // prevent refresh
         event.preventDefault()
@@ -63,8 +60,7 @@ const SheetEditor = ({editSubmit, characterDetails}) => {
                     <li><label htmlFor="radiation">Radiation: </label>
                         <input type="number" id="radiation" placeholder={characterDetails.radiation}  /></li>
                     <li><label htmlFor="critInj">Critical Injuries: </label>
-                        <textarea id="cr=" strength">Strength: </label>
-                        <input type="nritInj" placeholder={characterDetails.critInj}  /></li>
+                        <textarea id="critInj" placeholder={characterDetails.critInj}  /></li>
                     <li>
                         <label htmlFor="conditions">Conditions: </label>
                         <textarea id="conditions" placeholder={characterDetails.conditions}  />
