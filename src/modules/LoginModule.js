@@ -5,7 +5,7 @@ const LoginModule = () => {
                 <label htmlFor="username">Username:</label>
                 <input type="text" name="username" />
                 <label htmlFor="password">Password:</label>
-                <input type="password" name="username" />
+                <input type="password" name="password" />
                 <div className="buttonWrapper">
                     <button type="submit">Enter</button>
                     <button>New User?</button>

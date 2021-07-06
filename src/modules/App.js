@@ -4,6 +4,12 @@ import Header from './Header.js'
 import CharacterList from './CharacterList';
 import { useEffect, useState } from "react"
 import LoginModule from './LoginModule.js'
+import SignupModule from './SignupModule.js'
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom';
 
 function App() {
   // initialize dbRef
@@ -77,16 +83,22 @@ function App() {
       }
     }
   }
-
+  
   return (
-    <>
+    <Router>
       <div className="wrapper">
-        {/* header module */}
+      <Route exact path="/login" component={LoginModule}/>
+      <Route path="/signup" component={SignupModule}/>
+
+      <Route path="/app/:user" render={ () => 
+        <>
         <Header newHire={handleNewHireClick}/>
         <CharacterList characterData={characters} expandClick={handleExpandClick} miniClick={handleMiniClick} focusSheet={focusSheet} editClick={handleEditClick} editSheet={editSheet} editSubmit={updateSheet} removeSheet={removeFromDb}/>
-      </div>
-      <LoginModule/>
-    </>
+        </>
+      }
+        />
+        </div>
+        </Router>
   );
 }
 
