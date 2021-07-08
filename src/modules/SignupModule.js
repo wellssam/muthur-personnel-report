@@ -1,13 +1,20 @@
+import { useRef } from "react";
+
 const SignupModule = () => {
+
+    const emailRef = useRef();
+    const passwordRef = useRef();
+    const passwordConfirmRef = useRef();
+
     return(
         <div className="signupModal">
             <form>
-                <label htmlFor="username">Email:</label>
-                <input type="text" name="username" />
+                <label htmlFor="email">Email:</label>
+                <input type="text" name="email" ref={emailRef}/>
                 <label htmlFor="password">Password:</label>
-                <input type="password" name="password" />
+                <input type="password" name="password" ref={passwordRef}/>
                 <label htmlFor="passwordConfirm">Confirm Password:</label>
-                <input type="password" name="passwordConfirm" />
+                <input type="password" name="passwordConfirm" ref={passwordConfirmRef}/>
                 <div className="buttonWrapper">
                     <button type="submit">Create profile</button>
                 </div>

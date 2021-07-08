@@ -1,4 +1,5 @@
-div.loginModal{
+div.loginModal,
+div.signupModal{
     width: 50%;
     min-width: 500px;
     border: solid #0c6620 2px;
@@ -7,6 +8,7 @@ div.loginModal{
     padding: 10px;
     line-height: 3rem;
     margin: 0 auto;
+    margin-top: 35vh;
         .buttonWrapper{
             margin: 0 auto;
             padding-top: 10px;

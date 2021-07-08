@@ -21,11 +21,14 @@ function App() {
   // initialize a state to hold submitted info from the form
 
   useEffect(() => {
-    // initialize an array for the new data
-    const newDataArray = [];
-    dbRef.on("value", (response) => {
+    dbRef.on('value', (response) => {
+      // initialize an array for the new data
+      const newDataArray = [];
+      // set data to a variable
       const data = response.val();
+      // iterate through data object
       for (let key in data) { 
+        // setting the value as a new object
         const characterObj = { key: key, data: data[key] };
         // loop through the newDataArray and make sure there are no duplicate keys or names
         if(newDataArray){
@@ -44,7 +47,7 @@ function App() {
       }
       setCharacters(newDataArray)
     });
-  }, [dbRef]);
+  }, []);
   
   // handler for the when the expand button is clicked
   const handleExpandClick = (characterIndex) => {
@@ -92,8 +95,8 @@ function App() {
 
       <Route path="/app/:user" render={ () => 
         <>
-        <Header newHire={handleNewHireClick}/>
-        <CharacterList characterData={characters} expandClick={handleExpandClick} miniClick={handleMiniClick} focusSheet={focusSheet} editClick={handleEditClick} editSheet={editSheet} editSubmit={updateSheet} removeSheet={removeFromDb}/>
+          <Header newHire={handleNewHireClick}/>
+          <CharacterList characterData={characters} expandClick={handleExpandClick} miniClick={handleMiniClick} focusSheet={focusSheet} editClick={handleEditClick} editSheet={editSheet} editSubmit={updateSheet} removeSheet={removeFromDb}/>
         </>
       }
         />
